@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BindGPT: A Scalable Framework for 3D Molecular Design via Language Modeling and Reinforcement Learning</title>
+
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-72E37W4SPF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-72E37W4SPF');
+</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">BindGPT: A Scalable Framework for 3D Molecular Design via Language Modeling and Reinforcement Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://artemzholus.github.io">Artem Zholus</a><sup>1,3,4</sup>,</span>
+            <span class="author-block">
+              <a href="https://hk.linkedin.com/in/maksim-kuznetsov-72a321133">Maksim Kuznetsov</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/roman-schutski">Roman Schutski</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/rim-shayakhmetov-4b195bba">Rim Shayakhmetov</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ca.linkedin.com/in/daniil-polykovskiy">Daniil Polykovskiy</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sarathchandar.in/">Sarath Chandar</a><sup>3,4,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://linkedin.com/in/zhavoronkov/">Alex Zhavoronkov</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Insilico Medicine Canada Inc.,</span>
+            <span class="author-block"><sup>2</sup>Insilico Medicine AI Limited,</span>
+            </br>
+            <span class="author-block"><sup>3</sup>Mila - Quebec AI Institute,</span>
+            <span class="author-block"><sup>4</sup>Polytechnique Montreal,</span>
+            <span class="author-block"><sup>5</sup>CIFAR AI Chair</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2406.03686"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2406.03686"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/insilicomedicine/bindgpt"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/insilicomedicine"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    🤗
+                  </span>
+                  <span>HF (Coming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser" id="overview">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="teaser-wrapper">
+        <center>
+        <img src="static/images/scheme.svg" alt="BindGPT" width="850px" title="BindGPT">
+        </center>
+      </div>
+  
+      <h2 class="subtitle has-text-justified">
+        <span class="dnerf">BindGPT</span> is a new framework for building drug discovery models that 
+        leverages <i>compute-efficient pretraining, supervised funetuning, prompting, 
+        reinforcement learning, and tool use of LMs</i>. This allows BindGPT to build a single pre-trained model that 
+        exhibits state-of-the-art performance in
+        <b>3D Molecule Generation</b>, <b>3D Conformer Generation</b>, 
+        <b>Pocket-Conditioned 3D Molecule Generation</b>, posing them as <i>downstream tasks</i> for a pretrained model, 
+        while previous methods build task-specialized models without task transfer abilities.   
+        At the same time, thanks to the fast transformer inference technology, BindGPT is 2 orders of magnitude 
+        (100 times) faster than previous methods at generation.  
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser" id="overview">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-4">BindGPT is</h2>
+        <div class="content">
+          <h4>
+            <span style="font-weight:normal;">
+            <ul>
+              <li>
+                <b>if you are an LLM researcher:</b> The new framework allowing 
+                the full stack LLM research at the cost of just one node (~ 8 A100 GPUs). 
+                We demonstrate proof-of-concept of the InstructGPT pipeline 
+                (pretraining -> SFT -> Reinforcement Learning), prompting, and tool-use applied to 
+                this new domain.
+              </li>
+              <li>
+                <b>if you are an AI4Science researcher:</b> The new powerful state-of-the-art 
+                baseline model, that can solve many generative molecular tasks 
+                zero-shot or after transfer. It is fully data-driven, 
+                compared to recent diffusion models and graph neural networks for this
+                domain that use strong inductive biases. 
+              </li>
+              <li>
+                <b>if you are a biotechnology researcher:</b> The new generative model for small molecules
+                generation in 3D augmented with Reinforcement Learning. BindGPT solves three generative tasks:
+                3D molecule generation, conformer generation, and pocket-conditioned molecule generation.
+                Notably, the model finetunes with RL only once with many protein targets to avoid finetuning 
+                on each new test protein target.
+              </li>
+            </ul>
+            </span>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Generating novel active molecules for a given protein is an extremely challenging task for generative models that 
+            requires an understanding of the complex physical interactions between the molecule and its environment. 
+            In this paper, we present a novel generative model, BindGPT which uses a conceptually simple but powerful 
+            approach to create 3D molecules within the protein's binding site. Our model produces molecular graphs and 
+            conformations jointly, eliminating the need for an extra graph reconstruction step. We pretrain BindGPT on a 
+            large-scale dataset and fine-tune it with reinforcement learning using scores from external simulation software. 
+            We demonstrate how a single pretrained language model can serve at the same time as a 3D molecular generative model, 
+            conformer generator conditioned on the molecular graph, and a pocket-conditioned 3D molecule generator. 
+            Notably, the model does not make any representational equivariance assumptions about the domain of generation. 
+            We show how such simple conceptual approach combined with pretraining and scaling can perform on par or better 
+            than the current best specialized diffusion models, language models, and graph neural networks while being two orders 
+            of magnitude cheaper to sample.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Training Paradigm</h2>
+        <h3 class="title is-4">Pretraining</h3>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="content has-text-justified">
+              <p>
+                The key idea of our method is utilizing an autoregressive token generation model, influenced
+                by GPT-based models, to solve several 3D small molecule generation tasks in one simple yet
+                flexible paradigm. The main principle in our approach is to formulate several 3D molecular
+                design task as prompted generation of text. To achieve that, we layout the tokens of a
+                condition before the tokens of the object to generate. For instance, a prompt can be the
+                protein pocket for the pocket-conditioned generation task or the 2D molecular structure for
+                the conformation generation task. 
+                During pretraining, every sequence in the training batch is either a ligand sequence of tokens or a pocket
+                sequence of tokens following the scheme on the right image. 
+                We pretrain a 100M GPT model on 42B tokens on the version of data without hydrogens and 90B tokens on 
+                the data with hydrogens.
+              </p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content has-text-justified">
+              <center>
+                <img src="static/images/data_layout_pretrain.svg" 
+                  alt="Data Layout" title="Data Layout" width="500px">
+              </center>
+              <p>
+                <b>Figure 1:</b> Data layout during the pretraining. Arrows show the tokens sequence order. Nodes such
+                as <tt>&lt;POCKET&gt;</tt> show special tokens. Training is done
+                on a mixture of pocket and ligand datasets.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="title is-4">Supervised Finetuning and Reinforcement Learning</h3>
+        
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content has-text-justified">
+              <center>
+                <img src="static/images/data_layout_sft_rl.svg" 
+                  alt="Data Layout" title="Data Layout" width="500px">
+              </center>
+              <p><b>Figure 2:</b> Data layout during the finetuning. Arrows show the tokens sequence order. Nodes such
+                as <tt>&lt;LIGAND&gt;</tt> show special tokens.</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content has-text-justified">
+              <p>
+                As a result of the pretraining, BindGPT gains an understanding of a broad chemical space
+                of molecules and proteins. In the supervised finetuning stage, we simply concatenate 
+                text encodings of protein pocket and molecule as shown in the image. We treat resulting 
+                sequences as prompt2responce strings and finetune the language model in a supervised 
+                learning fashion (<tt>BindGPT-FT</tt>). Thereforem having learned proteins and molecules separately
+                during pretraining, the finetuning exploits the independent knowledge of both pockets and
+                ligands to learn a conditional dependency between them.
+              </p>
+              <p>
+                We employ SMILES randomization, which can heavily randomize one molecule by 
+                yielding 100-1000 different SMILES strings. Also, we randomly rotate the 3D coordinates 
+                of the protein pocket and of the ligand (with the same rotation matrix). 
+                This way our model learns to <i>understand structural and spatial properties of molecular 
+                binding beyond just token sequences,</i> that is, it <b>learns equivariant protein binding</b>.
+              </p>
+              <p>
+                To enable generation of molecules with high binding affinity, we employ two strategies: Reward-conditined
+                finetuning (<tt>BindGPT-RFT</tt>) and finetuning with RL (<tt>BindGPT-RL</tt>). 
+                the first one simply adds a scalar score to the prompt of the language model during the supervised 
+                finetuning stage.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column has-text-justified">
+            <p>
+              Second, use reinforcement learning to optimize the binding affinity of molecules. We use the model 
+              from the SFT stage (i.e. <tt>BindGPT-FT</tt>) and train it with REINFORCE over a fixed dataset of pocket
+              prompts.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <p>
+              We evaluate BindGPT on three downstream tasks of drug discovery: 3D molecule generation, 3D conformer 
+              generation, and pocket-conditioned generation of 3D molecules. We pretrain BindGPT on a large conformer
+              dataset consisting of 208M 3D molecular conformers. After pretraining, the model can already solve two downstream
+              tasks in a zero-shot fashion: generating molecules in 3D and 3D conformer generation.
+            </p>
+            <center>
+              <img src="static/images/table1_uncond.svg" width="1000x">
+            </center>
+            <p>
+              <b>Table 1:</b> Generative metrics for the molecule generation task after the large-scale pretraining. <tt>(H)</tt>
+              is explicit hydrogens are generated with molecules. For XYZ-TF, the RMSD calculation
+              algorithm failed to converge. BindGPT and XYZ-TF are the only models capable of pretraining at such 
+              large scale. 
+            </p>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-three-fifths">
+              <div class="content has-text-justified">
+                <center>
+                  <img src="static/images/uncond_crop.svg" width="700px">
+                </center>
+                <p>
+                  <b>Figure 3:</b> Unconditional samples from the model. No cherry picking, 
+                  filtering, or tool-use.
+                </p>
+              </div>
+            </div>
+            <div class="column is-two-fifths">
+              <div class="content has-text-justified">
+                <p>
+                  After the pretraining phase, we pass token <tt>&ltLIGAND&gt</tt> to generate a 3D molecule
+                  from the model. Examples of molecules that the model generates are shown in <b>Figure 3</b>.
+                  In <b>Table 1</b>, we summarize the generative metrics that our model obtains after the 
+                  pretraining. Note that no other 3D generative methods are capable of pretraining 
+                  at such large scale (see paper for details). We report validity (&uarr;) of molecules and three 
+                  drudlikeness metrics (QED, SA, Lipinski (&uarr;)) to represent the overall quality of 
+                  the generated molecular graph structures, finally we report the RMS Distance to the closest RDKit 
+                  conformer. 
+                </p>
+
+                <p>
+                  Despite RDKit not being the most accurate conformer generator, it is used 
+                  used in pretraining to generate 200M conformers. We use more accurate RMSD computation
+                  in the next section. 
+                </p>
+              </div>
+            </div>
+          </div>  
+          <div class="content has-text-justified">
+            <p>
+              To compare BindGPT with other 3D generative models, we <i>finetune</i> the model on GEOM-DRUGS, 
+              which is the current main finetuning dataset for training 3D generative models. The results are 
+              shown in <b>Table 2</b>. The knowledge, attained during the pretraining helps the model to 
+              enable efficient transfer to high-quality conformers of GEOM-DRUGS, compared to MolDiff and EDM
+              both of which are small-scale diffusion models.
+            </p>
+            <center>
+              <img src="static/images/table2_cond.svg" width="1000x">
+            </center>
+            <p>
+              <b>Table 2:</b> Generative metrics of the generated 3D molecules on GEOM-DRUGS. 
+              BindGPT is finetuned on this dataset after pretraining at much larger scale,
+              while other methods train only on GEOM-DRUGS. Most of the metrics measure the distance (&darr;)
+              between the generated distribution and the validation set of GEOM-GRUGS.
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            For the task of generating 3D conformers given a molecular graph, we use The Platinum dataset
+            which was designed to assess the quality of conformer generators. <b>Figure 4</b> and <b>5</b> 
+            show zero-shot results for generating conformations on this new dataset. We report RMSD Coverage metric 
+            (&uarr;) that reveals the distance between generated 3D conformers and the real ones.
+          </div>
+        <div class="columns is-centered">
+          
+          <div class="column is-one-half">
+            <div class="content has-text-justified">
+              <center>
+                <img src="static/images/platinum_samples_new.svg" 
+                  alt="Data Layout" title="Data Layout" width="700px">
+              </center> 
+              
+            </div>
+          </div>
+
+          <div class="column is-one-half">
+            <div class="content has-text-justified">
+              <center>
+                <img src="static/images/platinum_v2.svg" 
+                  alt="Data Layout" title="Data Layout" width="700px">
+              </center>
+              
+            </div>
+          </div>
+
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-one-half">
+            <div class="content has-text-justified">
+              <p>
+                <b>Figure 4:</b> Generated conformers for reference molecules from 
+                the Platinum dataset.
+              </p>
+            </div>
+          </div>
+          <div class="column is-one-half">
+            <div class="content has-text-justified">
+              <p>
+                <b>Figure 5:</b> RMSD Coverage metric (&uarr;) calculated on the Platinum dataset for 
+                the 3D conformation generation task.
+              </p>
+            </div>
+          </div>
+          
+        </div>
+        
+
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                Finally, we evaluate our framework on the pocket-conditioned generation of 3D molecules.
+                As explained in the previous sections, we finetune the model on the aligned dataset
+                of pockets and molecules. In particular, we explore three variants of such finetuning. First, 
+                <tt>BindGPT-FT</tt> - finetuned on all pocket-ligand pairs including the badly scored
+                ones to provide an initialization for the RL model. Second, <tt>BindGPT-RFT</tt> - 
+                performs the reward conditioned finetuning on the same data and conditions on 
+                high rewards (low binding affinity) at test time. Third, <tt>BindGPT-RL</tt>
+                finetunes from <tt>BindGPT-FT</tt> using Reinforcement Learning to minimize binding 
+                affinity. We report binding affinity score (Vina score &darr;) as the main 
+                metric of interest and druglikeness metrics (QED, SA, Lipinski &uarr;)
+              </p>
+              <center>
+                <img src="static/images/table3-pocket.svg" width="800px">
+              </center>
+              <p>
+                <b>Table 3:</b> Generative metrics for the pocket-conditioned generation task. Due to 
+                its explicit reward maximization, BindGPT significantly outperforms all previous
+                baselines. Note that RL only minimizes the vina score, i.e. SA and QED are not included 
+                into the reward.
+              </p>
+              <center>
+                <img src="static/images/pocket_samples.svg" width="800px">
+              </center>
+              <p>
+                <b>Figure 6:</b> Examples of molecules generated by BindGPT and baselines.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{zholus2021bindgpt,
+  author    = {Artem Zholus and Maksim Kuznetsov and Roman Schutski and Rim Shayakhmetov and  Daniil Polykovskiy and Sarath Chandar and Alex Zhavoronkov},
+  title     = {BindGPT: A Scalable Framework for 3D Molecular Design via Language Modeling and Reinforcement Learning},
+  journal   = {arXiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2406.03686">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/insilicomedicine" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website was build using <a
+              href="https://github.com/nerfies/nerfies.github.io">this</a> template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
