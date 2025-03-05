@@ -62,6 +62,12 @@ body {
   background-color: rgba(218, 165, 32, 0.1); /* Light background */
 }
 
+.aaai::after {
+  content: '\1F3C6'; /* Unicode for the trophy emoji */
+  margin-left: 8px; /* Space between the icon and text */
+  font-size: 24px; /* Slightly larger size for the icon */
+}
+
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
